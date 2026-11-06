@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#7c3f67">
+<title>Frutinovela Studio</title>
+<style>
+:root{--ink:#302432;--muted:#766878;--pink:#e8799b;--purple:#7c3f67;--cream:#fff8f1;--green:#548b69}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(140deg,#fff7ed,#fce8f0);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}
+header{padding:30px 18px 24px;text-align:center;background:linear-gradient(120deg,#75416f,#d66b91);color:white}
+header h1{font-size:clamp(28px,7vw,42px);margin:0}header p{margin:8px 0 0}
+main{max-width:900px;margin:22px auto;padding:0 14px 48px}.panel{background:white;border:1px solid #f0dce4;border-radius:20px;padding:20px;margin:14px 0;box-shadow:0 8px 24px #55364a10}
+h2{margin:0 0 12px;font-size:21px}.intro{color:var(--muted);line-height:1.55}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+label{display:block;font-weight:700;margin:13px 0 6px}input,select,textarea{width:100%;padding:12px;border:1px solid #ddcbd4;border-radius:12px;font:inherit;background:#fff}textarea{min-height:90px;resize:vertical}
+button{border:0;border-radius:12px;padding:13px 17px;background:var(--purple);color:#fff;font-weight:750;font-size:15px;margin:14px 8px 0 0;cursor:pointer}button.alt{background:var(--green)}button.light{background:#f6e9ef;color:var(--purple)}
+#output{white-space:pre-wrap;line-height:1.65;background:#fffaf7;border:1px dashed #dfb8c7;border-radius:14px;padding:16px;min-height:100px}
+.pill{display:inline-block;background:#e8f3eb;color:#386648;border-radius:99px;padding:5px 10px;font-size:12px;font-weight:800}
+.small{font-size:13px;color:var(--muted);line-height:1.5}.feature{padding:10px 0;border-bottom:1px solid #f2e7eb}.feature:last-child{border:0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:10px}
+</style>
+</head>
+<body>
+<header><h1>🍓 Frutinovela Studio</h1><p>Un estudio creativo para imaginar tus historias y transformaciones</p></header>
+<main>
+<section class="panel">
+<span class="pill">PRIMERA VERSIÓN</span>
+<h2 style="margin-top:12px">🎭 Creador de novelas y guiones</h2>
+<p class="intro">Escribe tu idea y crea un borrador de episodio con personajes, escenas y diálogos. Puedes copiarlo y guardarlo. Esta versión funciona en el navegador sin pagar ni crear una cuenta.</p>
+<div class="grid">
+<div><label for="genre">Género</label><select id="genre"><option>Drama y traición</option><option>Romance</option><option>Comedia</option><option>Misterio</option><option>Suspenso</option><option>Fantasía</option><option>Acción</option></select></div>
+<div><label for="episode">Número de episodio</label><select id="episode"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div>
+</div>
+<label for="title">Nombre de la novela</label><input id="title" placeholder="Ej.: Amor entre frutas">
+<div class="grid">
+<div><label for="hero">Personaje principal</label><input id="hero" placeholder="Ej.: Fresa Valentina"></div>
+<div><label for="second">Segundo personaje</label><input id="second" placeholder="Ej.: Mango Sebastián"></div>
+</div>
+<label for="extra">Otros personajes (opcional)</label><input id="extra" placeholder="Ej.: Doña Piña, Limón Carlos">
+<label for="idea">¿Qué sucede en este episodio?</label><textarea id="idea" placeholder="Ej.: Valentina descubre que Sebastián le ha ocultado un secreto..."></textarea>
+<button id="create">✨ Crear episodio</button><button class="alt" id="copy">Copiar guion</button><button class="light" id="download">Guardar guion .txt</button>
+</section>
+<section class="panel"><h2>📜 Tu guion</h2><div id="output">Tu episodio aparecerá aquí cuando pulses «Crear episodio».</div></section>
+<section class="panel"><h2>🏡 Estudio de restauraciones</h2><p class="intro">Prepara la idea de un video de transformación paso a paso.</p>
+<label for="object">¿Qué quieres restaurar?</label><input id="object" placeholder="Ej.: una casa antigua, una silla, un carro oxidado">
+<label for="style">Estilo de transformación</label><select id="style"><option>Realista, de abandonado a renovado</option><option>Restauración antigua y elegante</option><option>Moderno y minimalista</option><option>Rústico y acogedor</option></select>
+<button id="restore">Crear plan de restauración</button><div id="restoreout" style="white-space:pre-wrap;line-height:1.6;margin-top:14px"></div>
+</section>
+<section class="panel"><h2>🚧 Próximas funciones</h2>
+<div class="feature">🎨 Generación de imágenes de personajes y escenarios</div>
+<div class="feature">🗣️ Voces en español y diálogos hablados</div>
+<div class="feature">🎬 Animación y generación de videos</div>
+<div class="feature">✂️ Editor de escenas y exportación MP4</div>
+<div class="feature">🏚️ Generador visual de reconstrucciones y restauraciones</div>
+<p class="small">Estas funciones todavía no están conectadas. Esta primera versión crea guiones y planes de forma local; no finge generar videos ni imágenes con IA. Para añadir generación real de imágenes, voces y videos necesitaremos conectar motores gratuitos compatibles, algunos de los cuales requieren una computadora o tienen límites de uso.</p>
+</section>
+<footer>Frutinovela Studio · Primera versión gratuita</footer>
+</main>
+<script>
+const el=id=>document.getElementById(id);
+let current='';
+el('create').onclick=()=>{
+ const genre=el('genre').value, ep=el('episode').value;
+ const hero=el('hero').value.trim()||'Fresa Valentina', second=el('second').value.trim()||'Mango Sebastián';
+ const title=el('title').value.trim()||'Secretos del Mercado Frutal';
+ const idea=el('idea').value.trim()||'Un secreto inesperado amenaza con cambiar la vida de todos.';
+ const extra=el('extra').value.trim();
+ const opening={'Drama y traición':'La calma del barrio frutal se rompe cuando','Romance':'En una tarde llena de colores, todo cambia porque','Comedia':'El mercado frutal vive el día más disparatado cuando','Misterio':'Una pista misteriosa aparece justo cuando','Suspenso':'Al caer la noche, una noticia inquietante sorprende a','Fantasía':'Una luz mágica aparece y transforma el destino cuando','Acción':'Una emergencia sacude la ciudad frutal y obliga a'};
+ current=`${title.toUpperCase()}\\nEPISODIO ${ep} · ${genre.toUpperCase()}\\n\\nPERSONAJES\\n${hero}\\n${second}${extra?'\\n'+extra:''}\\n\\nESCENA 1 — PLAZA FRUTAL — DÍA\\nNARRADOR: ${opening[genre]} ${idea}\\n\\n${hero}: (sorprendida) No puedo creer lo que está pasando. Necesito que me digas la verdad.\\n\\n${second}: (nervioso) Hay algo que no te he contado. Tenía miedo de cómo reaccionarías.\\n\\nESCENA 2 — JUNTO A LA FUENTE\\n${hero}: ¿Desde cuándo me ocultas esto?\\n\\n${second}: Quería protegerte, pero ahora todo se ha complicado.\\n\\nNARRADOR: El silencio se apodera de la plaza. Los dos saben que su relación acaba de cambiar para siempre.\\n\\n${hero}: Esto no termina aquí. Mañana quiero respuestas.\\n\\nNARRADOR: Pero justo cuando parece que todo ha terminado, alguien escucha la conversación desde las sombras...\\n\\nFIN DEL EPISODIO ${ep}\\nCONTINUARÁ...`;
+ el('output').textContent=current;
+};
+el('copy').onclick=async()=>{if(!current)return alert('Primero crea un episodio.');try{await navigator.clipboard.writeText(current);alert('Guion copiado.')}catch(e){alert('Selecciona el texto del guion y cópialo.')}};
+el('download').onclick=()=>{if(!current)return alert('Primero crea un episodio.');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([current],{type:'text/plain;charset=utf-8'}));a.download='guion-frutinovela.txt';a.click();URL.revokeObjectURL(a.href)};
+el('restore').onclick=()=>{const obj=el('object').value.trim()||'un objeto antiguo',style=el('style').value;el('restoreout').textContent=`PLAN DE VIDEO: ${obj.toUpperCase()}\\nEstilo: ${style}\\n\\n1. Mostrar el estado original y los detalles del desgaste.\\n2. Limpiar el área y retirar polvo o piezas sueltas.\\n3. Inspeccionar daños y preparar materiales.\\n4. Reparar estructura y sustituir piezas dañadas.\\n5. Lijar, alisar y preparar superficies.\\n6. Aplicar pintura, acabado o materiales nuevos.\\n7. Montar los detalles finales y decorar.\\n8. Mostrar el resultado con una toma de antes y después.\\n\\nNOTA: Este es un guion de planificación; todavía no genera las imágenes ni el video automáticamente.`};
+</script>
+</body></html>
